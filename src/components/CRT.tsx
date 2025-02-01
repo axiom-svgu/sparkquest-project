@@ -184,13 +184,6 @@ const CRT: React.FC<CRTProps> = memo(({ children, className = "" }) => {
             >
               {children}
             </motion.div>
-            {/* CRT overlay effects */}
-            <motion.div
-              animate={{
-                opacity: isPowered ? 0.5 : 0,
-              }}
-              className="absolute inset-0 bg-[radial-gradient(circle_at_center,transparent_60%,rgba(0,0,0,0.3)_100%)] pointer-events-none z-20"
-            />
           </div>
         </motion.div>
       </AnimatePresence>

@@ -2,24 +2,16 @@ import { motion } from "framer-motion";
 import CRT from "./CRT";
 
 export default function HeroSection() {
-  return (
-    <section className="min-h-screen flex items-center justify-center bg-stone-900 px-4 py-20 relative overflow-hidden">
-      {/* Glassmorphic background elements */}
-      <div className="absolute inset-0 overflow-hidden">
-        <div className="absolute top-20 left-20 w-72 h-72 bg-green-500/20 rounded-full blur-3xl" />
-        <div className="absolute bottom-10 right-20 w-96 h-96 bg-emerald-500/20 rounded-full blur-3xl" />
-      </div>
+  const scrollToProjects = () => {
+    const projectsSection = document.getElementById("projects");
+    projectsSection?.scrollIntoView({ behavior: "smooth" });
+  };
 
+  return (
+    <section className="min-h-screen flex items-center justify-center px-4 py-20 relative overflow-hidden">
       <div className="max-w-[90rem] w-full relative">
         <CRT className="w-full aspect-video">
           <div className="h-full flex flex-col bg-black/90 p-8 relative font-mono">
-            <motion.div
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 0.1 }}
-              transition={{ delay: 1 }}
-              className="absolute inset-0 bg-[linear-gradient(45deg,transparent_25%,rgba(68,255,109,0.1)_50%,transparent_75%)] bg-[length:4px_4px]"
-            />
-
             <motion.div
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
@@ -38,7 +30,7 @@ export default function HeroSection() {
               >
                 <p className="text-green-500">$ whoami</p>
                 <div className="pl-4 text-green-400">
-                  <p className="text-2xl font-bold">Vinesh Rajpurohit</p>
+                  <p className="text-2xl font-bold">Vaidehi Shah</p>
                   <p className="text-green-400/80">Full Stack Developer</p>
                 </div>
               </motion.div>
@@ -90,7 +82,10 @@ export default function HeroSection() {
               >
                 <p className="text-green-500">$ ./get-started.sh</p>
                 <div className="pl-4 flex gap-4">
-                  <button className="group px-4 py-1.5 bg-green-600/20 hover:bg-green-600 text-green-400 hover:text-white rounded transition-all duration-300 border border-green-500/30 hover:border-green-500 text-sm">
+                  <button
+                    onClick={scrollToProjects}
+                    className="group px-4 py-1.5 bg-green-600/20 hover:bg-green-600 text-green-400 hover:text-white rounded transition-all duration-300 border border-green-500/30 hover:border-green-500 text-sm"
+                  >
                     View Projects{" "}
                     <span className="inline-block transition-transform group-hover:translate-x-1">
                       →

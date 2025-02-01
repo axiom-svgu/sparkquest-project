@@ -34,7 +34,7 @@ export default function NavBar() {
               animate={{ opacity: 1 }}
               className="text-green-500 font-mono text-lg"
             >
-              vinesh.dev
+              vaidehi.dev
             </motion.div>
 
             {/* Navigation Links */}

@@ -1,8 +1,9 @@
 "use client";
 import { cn } from "@/lib/utils";
 import { Canvas, useFrame, useThree } from "@react-three/fiber";
-import React, { useMemo, useRef } from "react";
+import React, { useMemo, useRef, useEffect } from "react";
 import * as THREE from "three";
+import { motion, useMotionValue, useSpring } from "framer-motion";
 
 export const CanvasRevealEffect = ({
   animationSpeed = 0.4,
@@ -306,3 +307,83 @@ interface ShaderProps {
   };
   maxFps?: number;
 }
+
+export const EvervaultCard = ({ children }: { children: React.ReactNode }) => {
+  const ref = useRef<HTMLDivElement>(null);
+
+  const mouseX = useMotionValue(0);
+  const mouseY = useMotionValue(0);
+
+  const centerX = useMotionValue(0);
+  const centerY = useMotionValue(0);
+
+  const springConfig = { damping: 15, stiffness: 150 };
+
+  const rotateX = useSpring(0, springConfig);
+  const rotateY = useSpring(0, springConfig);
+
+  useEffect(() => {
+    if (!ref.current) return;
+    const updateMousePosition = (ev: MouseEvent) => {
+      const { clientX, clientY } = ev;
+      const element = ref.current!;
+      const rect = element.getBoundingClientRect();
+
+      const width = rect.width;
+      const height = rect.height;
+
+      const x = clientX - rect.left;
+      const y = clientY - rect.top;
+
+      mouseX.set(x);
+      mouseY.set(y);
+
+      const centerXVal = width / 2;
+      const centerYVal = height / 2;
+
+      centerX.set(centerXVal);
+      centerY.set(centerYVal);
+
+      // Calculate rotation values
+      const rotateXVal = ((y - centerYVal) / height) * -20;
+      const rotateYVal = ((x - centerXVal) / width) * 20;
+
+      rotateX.set(rotateXVal);
+      rotateY.set(rotateYVal);
+    };
+
+    const element = ref.current;
+    element.addEventListener("mousemove", updateMousePosition);
+
+    return () => {
+      element.removeEventListener("mousemove", updateMousePosition);
+    };
+  }, [mouseX, mouseY, centerX, centerY, rotateX, rotateY]);
+
+  const handleMouseLeave = () => {
+    mouseX.set(0);
+    mouseY.set(0);
+    centerX.set(0);
+    centerY.set(0);
+    rotateX.set(0);
+    rotateY.set(0);
+  };
+
+  return (
+    <motion.div
+      ref={ref}
+      onMouseLeave={handleMouseLeave}
+      style={{
+        transformStyle: "preserve-3d",
+        rotateX: rotateX,
+        rotateY: rotateY,
+      }}
+      className="relative h-full w-full"
+    >
+      <div className="group/card h-full w-full relative">
+        <div className="bg-black/[0.96] opacity-0 group-hover/card:opacity-100 absolute inset-0 h-full w-full bg-gradient-to-br from-black/5 to-black/20 backdrop-blur-sm" />
+        {children}
+      </div>
+    </motion.div>
+  );
+};
