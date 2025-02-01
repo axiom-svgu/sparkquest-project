@@ -10,7 +10,7 @@ export default function HeroSection() {
         <div className="absolute bottom-10 right-20 w-96 h-96 bg-emerald-500/20 rounded-full blur-3xl" />
       </div>
 
-      <div className="max-w-6xl w-full relative">
+      <div className="max-w-[90rem] w-full relative">
         <CRT className="w-full aspect-video">
           <div className="h-full flex flex-col bg-black/90 p-8 relative font-mono">
             <motion.div
