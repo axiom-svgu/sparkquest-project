@@ -1,3 +1,4 @@
+import { useEffect } from "react";
 import HeroSection from "./components/HeroSection";
 import NavBar from "./components/NavBar";
 import ProjectsSection from "./components/ProjectsSection";
@@ -7,6 +8,10 @@ import HobbiesSection from "./components/sections/HobbiesSection";
 import ContactSection from "./components/sections/ContactSection";
 
 function App() {
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
+
   return (
     <div className="bg-stone-900 w-screen min-h-screen relative">
       {/* Glassmorphic background elements */}

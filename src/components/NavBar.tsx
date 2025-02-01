@@ -35,7 +35,8 @@ export default function NavBar() {
             <motion.div
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
-              className="text-green-500 font-mono text-lg"
+              className="text-green-500 font-mono text-lg cursor-pointer"
+              onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
             >
               vaidehi.dev
             </motion.div>
