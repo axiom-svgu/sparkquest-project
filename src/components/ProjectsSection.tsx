@@ -40,7 +40,8 @@ const projects: Project[] = [
       "Post-quantum cryptography implementation for military communications",
     tags: ["Rust", "C++", "Quantum", "Cryptography"],
     link: "https://github.com/yourusername/quantum-crypto",
-    image: "/quantum-crypto-thumb.jpg",
+    image:
+      "https://media.discordapp.net/attachments/1322638124517556368/1335130547445436426/quantum-resistant-vs-post-quantum-cryptography-700x441.png?ex=679f0cb8&is=679dbb38&hm=1c175e7181851026ee7a38049e1dcc59a9130a353ced5f6eb47b56b297bb5577&=&format=webp&quality=lossless&width=550&height=347",
     size: "sm",
     timeline: "14 months",
     challenge:
@@ -71,7 +72,8 @@ const projects: Project[] = [
     description: "AI-powered military strategy simulation platform",
     tags: ["Python", "TensorFlow", "Unity3D", "CUDA"],
     link: "https://github.com/yourusername/neural-warfare",
-    image: "/neural-warfare-thumb.jpg",
+    image:
+      "https://media.discordapp.net/attachments/1322638124517556368/1335130610594746408/neural-network-8684318_1280.png?ex=679f0cc7&is=679dbb47&hm=a3472f9f28e37f2f7287c1e482e211b0328c8b3f24be8353758250ed6a3d2d0f&=&format=webp&quality=lossless&width=888&height=666",
     size: "lg",
     timeline: "18 months",
     challenge:
@@ -86,7 +88,8 @@ const projects: Project[] = [
     description: "End-to-end encrypted communication system",
     tags: ["Go", "WebRTC", "React", "PostgreSQL"],
     link: "https://github.com/yourusername/secure-comms",
-    image: "/secure-comms-thumb.jpg",
+    image:
+      "https://media.discordapp.net/attachments/1322638124517556368/1335130011052671029/shutterstock_1644649453_1600x900.png?ex=679f0c38&is=679dbab8&hm=78d7b89c7de4e500b3e7cf4eae51114a0c30365f4332521d980b693d735ab96f&=&format=webp&quality=lossless&width=1183&height=665",
     size: "sm",
     timeline: "6 months",
     challenge:
@@ -194,16 +197,16 @@ export default function ProjectsSection() {
           open={!!selectedProject}
           onOpenChange={() => setSelectedProject(null)}
         >
-          <DialogContent className="max-w-[95vw] md:max-w-3xl bg-black/90 border-green-500/20 max-h-[90vh] overflow-y-auto mx-4">
+          <DialogContent className="w-[calc(100vw-2rem)] md:max-w-3xl bg-black/90 border-green-500/20 max-h-[90vh] overflow-y-auto p-4 md:p-6">
             {selectedProject && (
               <>
-                <DialogHeader>
-                  <DialogTitle className="text-2xl font-bold text-green-400">
+                <DialogHeader className="mb-4">
+                  <DialogTitle className="text-xl md:text-2xl font-bold text-green-400 break-words">
                     {selectedProject.title}
                   </DialogTitle>
                 </DialogHeader>
-                <div className="space-y-6">
-                  <div className="relative h-[200px] md:h-[300px] rounded-lg overflow-hidden">
+                <div className="space-y-4">
+                  <div className="relative w-full h-[180px] sm:h-[200px] md:h-[300px] rounded-lg overflow-hidden">
                     <img
                       src={selectedProject.image}
                       alt={selectedProject.title}
@@ -211,54 +214,54 @@ export default function ProjectsSection() {
                     />
                   </div>
 
-                  <div className="space-y-4">
+                  <div className="space-y-3 md:space-y-4">
                     <div>
-                      <h4 className="text-lg font-semibold text-green-400 mb-2">
+                      <h4 className="text-base md:text-lg font-semibold text-green-400 mb-1 md:mb-2">
                         Overview
                       </h4>
-                      <p className="text-green-400/80">
+                      <p className="text-sm md:text-base text-green-400/80">
                         {selectedProject.longDescription}
                       </p>
                     </div>
 
                     <div>
-                      <h4 className="text-lg font-semibold text-green-400 mb-2">
+                      <h4 className="text-base md:text-lg font-semibold text-green-400 mb-1 md:mb-2">
                         Challenge
                       </h4>
-                      <p className="text-green-400/80">
+                      <p className="text-sm md:text-base text-green-400/80">
                         {selectedProject.challenge}
                       </p>
                     </div>
 
                     <div>
-                      <h4 className="text-lg font-semibold text-green-400 mb-2">
+                      <h4 className="text-base md:text-lg font-semibold text-green-400 mb-1 md:mb-2">
                         Solution
                       </h4>
-                      <p className="text-green-400/80">
+                      <p className="text-sm md:text-base text-green-400/80">
                         {selectedProject.solution}
                       </p>
                     </div>
 
-                    <div className="flex flex-wrap gap-2">
+                    <div className="flex flex-wrap gap-1.5 md:gap-2">
                       {selectedProject.tags.map((tag) => (
                         <span
                           key={tag}
-                          className="px-3 py-1 bg-green-500/10 border border-green-500/20 rounded-full text-green-400 text-sm"
+                          className="px-2 md:px-3 py-0.5 md:py-1 bg-green-500/10 border border-green-500/20 rounded-full text-green-400 text-xs md:text-sm"
                         >
                           {tag}
                         </span>
                       ))}
                     </div>
 
-                    <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-4">
-                      <span className="text-green-400/80">
+                    <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-3 md:gap-4">
+                      <span className="text-sm md:text-base text-green-400/80">
                         Timeline: {selectedProject.timeline}
                       </span>
                       <a
                         href={selectedProject.link}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="inline-block px-6 py-2 bg-green-500/20 hover:bg-green-500/30 text-green-400 rounded-full transition-colors border border-green-500/20"
+                        className="inline-block px-4 md:px-6 py-1.5 md:py-2 bg-green-500/20 hover:bg-green-500/30 text-green-400 rounded-full transition-colors border border-green-500/20 text-sm md:text-base"
                       >
                         View Project →
                       </a>

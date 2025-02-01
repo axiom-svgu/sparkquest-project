@@ -3,6 +3,7 @@ import { motion, AnimatePresence } from "framer-motion";
 
 export default function NavBar() {
   const [isVisible, setIsVisible] = useState(false);
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -17,6 +18,8 @@ export default function NavBar() {
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
+
+  const menuItems = ["Projects", "Education", "Skills", "Hobbies", "Contact"];
 
   return (
     <AnimatePresence>
@@ -37,9 +40,9 @@ export default function NavBar() {
               vaidehi.dev
             </motion.div>
 
-            {/* Navigation Links */}
-            <div className="flex items-center gap-8">
-              {["About", "Projects", "Skills", "Contact"].map((item, index) => (
+            {/* Desktop Navigation Links */}
+            <div className="hidden md:flex items-center gap-8">
+              {menuItems.map((item, index) => (
                 <motion.a
                   key={item}
                   href={`#${item.toLowerCase()}`}
@@ -55,7 +58,63 @@ export default function NavBar() {
                 </motion.a>
               ))}
             </div>
+
+            {/* Mobile Menu Button */}
+            <button
+              onClick={() => setIsMenuOpen(!isMenuOpen)}
+              className="md:hidden text-green-400 p-2"
+            >
+              <div className="space-y-2">
+                <motion.span
+                  animate={
+                    isMenuOpen ? { rotate: 45, y: 8 } : { rotate: 0, y: 0 }
+                  }
+                  className="block w-8 h-0.5 bg-green-400"
+                ></motion.span>
+                <motion.span
+                  animate={isMenuOpen ? { opacity: 0 } : { opacity: 1 }}
+                  className="block w-8 h-0.5 bg-green-400"
+                ></motion.span>
+                <motion.span
+                  animate={
+                    isMenuOpen ? { rotate: -45, y: -8 } : { rotate: 0, y: 0 }
+                  }
+                  className="block w-8 h-0.5 bg-green-400"
+                ></motion.span>
+              </div>
+            </button>
           </div>
+
+          {/* Mobile Menu */}
+          <AnimatePresence>
+            {isMenuOpen && (
+              <motion.div
+                initial={{ opacity: 0, height: 0 }}
+                animate={{ opacity: 1, height: "auto" }}
+                exit={{ opacity: 0, height: 0 }}
+                className="md:hidden bg-black/90 border-t border-green-500/20"
+              >
+                <div className="flex flex-col items-center py-4">
+                  {menuItems.map((item, index) => (
+                    <motion.a
+                      key={item}
+                      href={`#${item.toLowerCase()}`}
+                      initial={{ opacity: 0, x: -20 }}
+                      animate={{
+                        opacity: 1,
+                        x: 0,
+                        transition: { delay: index * 0.1 },
+                      }}
+                      onClick={() => setIsMenuOpen(false)}
+                      className="w-full text-center py-3 text-green-400/80 hover:text-green-400 hover:bg-green-500/10 transition-colors font-mono text-sm"
+                    >
+                      &gt; {item}
+                    </motion.a>
+                  ))}
+                </div>
+              </motion.div>
+            )}
+          </AnimatePresence>
         </motion.nav>
       )}
     </AnimatePresence>
