@@ -7,11 +7,16 @@ export default function HeroSection() {
     projectsSection?.scrollIntoView({ behavior: "smooth" });
   };
 
+  const scrollToContact = () => {
+    const contactSection = document.getElementById("contact");
+    contactSection?.scrollIntoView({ behavior: "smooth" });
+  };
+
   return (
-    <section className="min-h-screen flex items-center justify-center px-4 py-20 relative overflow-hidden">
+    <section className="min-h-screen flex items-center justify-center px-4 py-12 md:py-20 relative overflow-hidden">
       <div className="max-w-[90rem] w-full relative">
-        <CRT className="w-full aspect-video">
-          <div className="h-full flex flex-col bg-black/90 p-8 relative font-mono">
+        <CRT className="w-full aspect-[4/3] md:aspect-video">
+          <div className="h-full flex flex-col bg-black/90 p-4 md:p-8 relative font-mono">
             <motion.div
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
@@ -21,7 +26,7 @@ export default function HeroSection() {
               Last login: {new Date().toLocaleString()} on terminal
             </motion.div>
 
-            <div className="space-y-4">
+            <div className="space-y-4 md:space-y-6">
               <motion.div
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
@@ -53,7 +58,7 @@ export default function HeroSection() {
                   ].map((skill) => (
                     <span
                       key={skill}
-                      className="px-2 py-0.5 bg-green-500/10 border border-green-500/20 rounded text-green-400 text-sm"
+                      className="px-2 py-0.5 text-xs md:text-sm bg-green-500/10 border border-green-500/20 rounded text-green-400"
                     >
                       {skill}
                     </span>
@@ -91,7 +96,10 @@ export default function HeroSection() {
                       →
                     </span>
                   </button>
-                  <button className="px-4 py-1.5 border border-green-500/30 text-green-400 hover:bg-green-500/10 rounded transition-all duration-300 hover:border-green-500 text-sm">
+                  <button
+                    onClick={scrollToContact}
+                    className="px-4 py-1.5 border border-green-500/30 text-green-400 hover:bg-green-500/10 rounded transition-all duration-300 hover:border-green-500 text-sm"
+                  >
                     Contact Me
                   </button>
                 </div>

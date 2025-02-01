@@ -161,14 +161,14 @@ const CRT: React.FC<CRTProps> = memo(({ children, className = "" }) => {
       initial={{ opacity: 0, y: 20 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.5 }}
-      className={`relative p-8 rounded-3xl bg-gradient-to-b from-[#1a1a1a] to-[#000000] shadow-[inset_0_0_0_8px_#1a1a1a,inset_0_0_0_10px_#000000,0_5px_25px_rgba(0,0,0,0.7)] transform perspective-[1000px] rotate-x-1 will-change-transform ${className}`}
+      className={`relative p-4 sm:p-8 rounded-3xl bg-gradient-to-b from-[#1a1a1a] to-[#000000] shadow-[inset_0_0_0_8px_#1a1a1a,inset_0_0_0_10px_#000000,0_5px_25px_rgba(0,0,0,0.7)] transform perspective-[1000px] rotate-x-1 will-change-transform min-h-[80vh] sm:min-h-0 ${className}`}
     >
       <AnimatePresence>
         <motion.div
           variants={screenVariants}
           initial="off"
           animate={isPowered ? "on" : "off"}
-          className={`relative rounded-[20px] perspective-[1000px] preserve-3d h-full will-change-[transform,opacity] ${
+          className={`relative rounded-[20px] perspective-[1000px] preserve-3d h-full min-h-[calc(80vh-2rem)] sm:min-h-0 will-change-[transform,opacity] ${
             !isPowered ? "animate-[turnOff_0.2s_ease-out_forwards]" : ""
           }`}
         >
@@ -193,19 +193,19 @@ const CRT: React.FC<CRTProps> = memo(({ children, className = "" }) => {
         initial={{ y: 20, opacity: 0 }}
         animate={{ y: 0, opacity: 1 }}
         transition={{ delay: 0.3 }}
-        className="absolute bottom-0 left-0 right-0 h-16 bg-[#1a1a1a] rounded-b-3xl flex items-center justify-between px-8"
+        className="absolute bottom-0 left-0 right-0 h-12 sm:h-16 bg-[#1a1a1a] rounded-b-3xl flex items-center justify-between px-4 sm:px-8"
       >
         {/* Left side controls */}
-        <div className="flex items-center space-x-4">
+        <div className="flex items-center space-x-2 sm:space-x-4">
           <motion.div
             variants={knobVariants}
             whileHover="hover"
             whileTap="tap"
             animate={{ rotate: leftKnobRotation }}
             onClick={handleLeftKnobClick}
-            className="w-8 h-8 bg-[#333] rounded-full border-2 border-[#222] shadow-inner cursor-pointer transform origin-center"
+            className="w-6 h-6 sm:w-8 sm:h-8 bg-[#333] rounded-full border-2 border-[#222] shadow-inner cursor-pointer transform origin-center"
           >
-            <div className="w-1 h-4 bg-[#666] mx-auto mt-1.5" />
+            <div className="w-1 h-3 sm:h-4 bg-[#666] mx-auto mt-1 sm:mt-1.5" />
           </motion.div>
         </div>
 
@@ -221,7 +221,7 @@ const CRT: React.FC<CRTProps> = memo(({ children, className = "" }) => {
             repeat: Infinity,
             repeatType: "reverse",
           }}
-          className="bg-[#001100] px-4 py-1 rounded font-mono text-[#00ff00] text-xs tracking-wider"
+          className="bg-[#001100] px-2 sm:px-4 py-1 rounded font-mono text-[#00ff00] text-[10px] sm:text-xs tracking-wider"
         >
           <motion.span
             animate={{
@@ -237,8 +237,8 @@ const CRT: React.FC<CRTProps> = memo(({ children, className = "" }) => {
         </motion.div>
 
         {/* Right side controls */}
-        <div className="flex items-center space-x-4">
-          <div className="flex flex-col space-y-2">
+        <div className="flex items-center space-x-2 sm:space-x-4">
+          <div className="flex flex-col space-y-1 sm:space-y-2">
             {[0, 1].map((index) => (
               <motion.div
                 key={index}
@@ -246,7 +246,7 @@ const CRT: React.FC<CRTProps> = memo(({ children, className = "" }) => {
                 whileHover="hover"
                 whileTap="tap"
                 onClick={() => handleBrightnessSlider(index)}
-                className="w-6 h-2 bg-[#333] rounded-sm cursor-pointer"
+                className="w-4 sm:w-6 h-1.5 sm:h-2 bg-[#333] rounded-sm cursor-pointer"
               />
             ))}
           </div>
@@ -263,7 +263,7 @@ const CRT: React.FC<CRTProps> = memo(({ children, className = "" }) => {
               repeat: isPowered ? Infinity : 0,
               repeatDelay: 5,
             }}
-            className="w-4 h-4 bg-[#333] rounded-full border-2 border-[#222] shadow-md cursor-pointer"
+            className="w-3 h-3 sm:w-4 sm:h-4 bg-[#333] rounded-full border-2 border-[#222] shadow-md cursor-pointer"
           />
           <motion.div
             animate={{
@@ -278,7 +278,7 @@ const CRT: React.FC<CRTProps> = memo(({ children, className = "" }) => {
               repeat: Infinity,
               repeatType: "reverse",
             }}
-            className="w-2 h-2 bg-[#00ff00] rounded-full"
+            className="w-1.5 h-1.5 sm:w-2 sm:h-2 bg-[#00ff00] rounded-full"
           />
         </div>
       </motion.div>
