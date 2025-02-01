@@ -202,15 +202,15 @@ export default function ProjectsSection() {
           open={!!selectedProject}
           onOpenChange={() => setSelectedProject(null)}
         >
-          <DialogContent className="w-[95vw] sm:w-[85vw] md:w-[75vw] lg:max-w-3xl bg-black/90 border-green-500/20 max-h-[85vh] sm:max-h-[90vh] overflow-y-auto p-3 sm:p-4 md:p-6">
+          <DialogContent className="w-[90vw] sm:w-[85vw] md:w-[75vw] lg:max-w-3xl bg-black/90 border-green-500/20 max-h-[90vh] overflow-y-auto px-3 py-2 sm:p-4 md:p-6 mx-auto">
             {selectedProject && (
               <>
-                <DialogHeader className="mb-3 sm:mb-4">
-                  <DialogTitle className="text-lg sm:text-xl md:text-2xl font-bold text-green-400 break-words">
+                <DialogHeader className="mb-2 sm:mb-4">
+                  <DialogTitle className="text-base sm:text-xl md:text-2xl font-bold text-green-400 break-words">
                     {selectedProject.title}
                   </DialogTitle>
                 </DialogHeader>
-                <div className="space-y-3 sm:space-y-4 md:space-y-6">
+                <div className="space-y-2 sm:space-y-4 md:space-y-6">
                   <div className="relative w-full aspect-[16/10] sm:aspect-[16/9] rounded-lg overflow-hidden">
                     {selectedProject.video ? (
                       <video
@@ -230,10 +230,10 @@ export default function ProjectsSection() {
                     )}
                   </div>
 
-                  <div className="space-y-3 sm:space-y-4 md:space-y-6">
-                    <div className="space-y-3 sm:space-y-4">
+                  <div className="space-y-2 sm:space-y-4 md:space-y-6">
+                    <div className="space-y-2 sm:space-y-4">
                       <div>
-                        <h4 className="text-sm sm:text-base md:text-lg font-semibold text-green-400 mb-1.5 sm:mb-2">
+                        <h4 className="text-sm sm:text-base md:text-lg font-semibold text-green-400 mb-1">
                           Overview
                         </h4>
                         <p className="text-xs sm:text-sm md:text-base text-green-400/80">
@@ -242,7 +242,7 @@ export default function ProjectsSection() {
                       </div>
 
                       <div>
-                        <h4 className="text-sm sm:text-base md:text-lg font-semibold text-green-400 mb-1.5 sm:mb-2">
+                        <h4 className="text-sm sm:text-base md:text-lg font-semibold text-green-400 mb-1">
                           Challenge
                         </h4>
                         <p className="text-xs sm:text-sm md:text-base text-green-400/80">
@@ -251,7 +251,7 @@ export default function ProjectsSection() {
                       </div>
 
                       <div>
-                        <h4 className="text-sm sm:text-base md:text-lg font-semibold text-green-400 mb-1.5 sm:mb-2">
+                        <h4 className="text-sm sm:text-base md:text-lg font-semibold text-green-400 mb-1">
                           Solution
                         </h4>
                         <p className="text-xs sm:text-sm md:text-base text-green-400/80">
@@ -260,18 +260,18 @@ export default function ProjectsSection() {
                       </div>
                     </div>
 
-                    <div className="flex flex-wrap gap-1.5 sm:gap-2">
+                    <div className="flex flex-wrap gap-1 sm:gap-2">
                       {selectedProject.tags.map((tag) => (
                         <span
                           key={tag}
-                          className="px-2 sm:px-3 py-0.5 sm:py-1 bg-green-500/10 border border-green-500/20 rounded-full text-green-400 text-[10px] sm:text-xs md:text-sm"
+                          className="px-1.5 sm:px-3 py-0.5 sm:py-1 bg-green-500/10 border border-green-500/20 rounded-full text-green-400 text-[10px] sm:text-xs md:text-sm"
                         >
                           {tag}
                         </span>
                       ))}
                     </div>
 
-                    <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-3 sm:gap-4">
+                    <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-2 sm:gap-4">
                       <span className="text-xs sm:text-sm md:text-base text-green-400/80">
                         Timeline: {selectedProject.timeline}
                       </span>
@@ -279,7 +279,7 @@ export default function ProjectsSection() {
                         href={selectedProject.link}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="w-full sm:w-auto text-center px-4 sm:px-6 py-1.5 sm:py-2 bg-green-500/20 hover:bg-green-500/30 text-green-400 rounded-full transition-colors border border-green-500/20 text-xs sm:text-sm md:text-base"
+                        className="w-full sm:w-auto text-center px-3 sm:px-6 py-1.5 sm:py-2 bg-green-500/20 hover:bg-green-500/30 text-green-400 rounded-full transition-colors border border-green-500/20 text-xs sm:text-sm md:text-base"
                       >
                         View Project →
                       </a>
