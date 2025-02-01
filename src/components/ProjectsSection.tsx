@@ -34,6 +34,8 @@ const projects: Project[] = [
       "Developed a scalable platform using ElasticSearch for data ingestion, Python for threat analysis, and React for real-time visualization. Implemented machine learning models for anomaly detection and automated threat classification.",
     longDescription:
       "A comprehensive cyber threat intelligence platform that helps defense organizations stay ahead of emerging threats. The system processes terabytes of security logs, network traffic, and threat feeds to provide actionable intelligence. Features include real-time alerts, threat hunting capabilities, and automated response playbooks.",
+    video:
+      "https://v.ftcdn.net/02/92/14/57/700_F_292145785_EOyNHwyE3pt9Feen6LyJ5tECCnvKzep3_ST.mp4",
   },
   {
     title: "Quantum-Resistant Encryption System",
@@ -200,21 +202,21 @@ export default function ProjectsSection() {
           open={!!selectedProject}
           onOpenChange={() => setSelectedProject(null)}
         >
-          <DialogContent className="w-[calc(100vw-2rem)] md:max-w-3xl bg-black/90 border-green-500/20 max-h-[90vh] overflow-y-auto p-4 md:p-6">
+          <DialogContent className="w-[95vw] sm:w-[85vw] md:w-[75vw] lg:max-w-3xl bg-black/90 border-green-500/20 max-h-[85vh] sm:max-h-[90vh] overflow-y-auto p-3 sm:p-4 md:p-6">
             {selectedProject && (
               <>
-                <DialogHeader className="mb-4">
-                  <DialogTitle className="text-xl md:text-2xl font-bold text-green-400 break-words">
+                <DialogHeader className="mb-3 sm:mb-4">
+                  <DialogTitle className="text-lg sm:text-xl md:text-2xl font-bold text-green-400 break-words">
                     {selectedProject.title}
                   </DialogTitle>
                 </DialogHeader>
-                <div className="space-y-4">
-                  <div className="relative w-full h-[180px] sm:h-[200px] md:h-[300px] rounded-lg overflow-hidden">
+                <div className="space-y-3 sm:space-y-4 md:space-y-6">
+                  <div className="relative w-full aspect-[16/10] sm:aspect-[16/9] rounded-lg overflow-hidden">
                     {selectedProject.video ? (
                       <video
                         src={selectedProject.video}
                         controls
-                        className="w-full h-full object-cover"
+                        className="absolute inset-0 w-full h-full object-cover"
                         poster={selectedProject.image}
                       >
                         Your browser does not support the video tag.
@@ -223,59 +225,61 @@ export default function ProjectsSection() {
                       <img
                         src={selectedProject.image}
                         alt={selectedProject.title}
-                        className="w-full h-full object-cover"
+                        className="absolute inset-0 w-full h-full object-cover"
                       />
                     )}
                   </div>
 
-                  <div className="space-y-3 md:space-y-4">
-                    <div>
-                      <h4 className="text-base md:text-lg font-semibold text-green-400 mb-1 md:mb-2">
-                        Overview
-                      </h4>
-                      <p className="text-sm md:text-base text-green-400/80">
-                        {selectedProject.longDescription}
-                      </p>
+                  <div className="space-y-3 sm:space-y-4 md:space-y-6">
+                    <div className="space-y-3 sm:space-y-4">
+                      <div>
+                        <h4 className="text-sm sm:text-base md:text-lg font-semibold text-green-400 mb-1.5 sm:mb-2">
+                          Overview
+                        </h4>
+                        <p className="text-xs sm:text-sm md:text-base text-green-400/80">
+                          {selectedProject.longDescription}
+                        </p>
+                      </div>
+
+                      <div>
+                        <h4 className="text-sm sm:text-base md:text-lg font-semibold text-green-400 mb-1.5 sm:mb-2">
+                          Challenge
+                        </h4>
+                        <p className="text-xs sm:text-sm md:text-base text-green-400/80">
+                          {selectedProject.challenge}
+                        </p>
+                      </div>
+
+                      <div>
+                        <h4 className="text-sm sm:text-base md:text-lg font-semibold text-green-400 mb-1.5 sm:mb-2">
+                          Solution
+                        </h4>
+                        <p className="text-xs sm:text-sm md:text-base text-green-400/80">
+                          {selectedProject.solution}
+                        </p>
+                      </div>
                     </div>
 
-                    <div>
-                      <h4 className="text-base md:text-lg font-semibold text-green-400 mb-1 md:mb-2">
-                        Challenge
-                      </h4>
-                      <p className="text-sm md:text-base text-green-400/80">
-                        {selectedProject.challenge}
-                      </p>
-                    </div>
-
-                    <div>
-                      <h4 className="text-base md:text-lg font-semibold text-green-400 mb-1 md:mb-2">
-                        Solution
-                      </h4>
-                      <p className="text-sm md:text-base text-green-400/80">
-                        {selectedProject.solution}
-                      </p>
-                    </div>
-
-                    <div className="flex flex-wrap gap-1.5 md:gap-2">
+                    <div className="flex flex-wrap gap-1.5 sm:gap-2">
                       {selectedProject.tags.map((tag) => (
                         <span
                           key={tag}
-                          className="px-2 md:px-3 py-0.5 md:py-1 bg-green-500/10 border border-green-500/20 rounded-full text-green-400 text-xs md:text-sm"
+                          className="px-2 sm:px-3 py-0.5 sm:py-1 bg-green-500/10 border border-green-500/20 rounded-full text-green-400 text-[10px] sm:text-xs md:text-sm"
                         >
                           {tag}
                         </span>
                       ))}
                     </div>
 
-                    <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-3 md:gap-4">
-                      <span className="text-sm md:text-base text-green-400/80">
+                    <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-3 sm:gap-4">
+                      <span className="text-xs sm:text-sm md:text-base text-green-400/80">
                         Timeline: {selectedProject.timeline}
                       </span>
                       <a
                         href={selectedProject.link}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="inline-block px-4 md:px-6 py-1.5 md:py-2 bg-green-500/20 hover:bg-green-500/30 text-green-400 rounded-full transition-colors border border-green-500/20 text-sm md:text-base"
+                        className="w-full sm:w-auto text-center px-4 sm:px-6 py-1.5 sm:py-2 bg-green-500/20 hover:bg-green-500/30 text-green-400 rounded-full transition-colors border border-green-500/20 text-xs sm:text-sm md:text-base"
                       >
                         View Project →
                       </a>
