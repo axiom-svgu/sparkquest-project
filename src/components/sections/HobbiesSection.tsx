@@ -24,7 +24,7 @@ const hobbies = [
 export default function HobbiesSection() {
   return (
     <section
-      className="min-h-screen px-4 py-24 relative overflow-hidden"
+      className="min-h-[60vh] px-4 py-24 relative overflow-hidden"
       id="hobbies"
     >
       {/* Animated background pattern */}
