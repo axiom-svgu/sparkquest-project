@@ -14,6 +14,7 @@ interface Project {
   timeline: string;
   challenge: string;
   solution: string;
+  video?: string;
 }
 
 const projects: Project[] = [
@@ -66,6 +67,8 @@ const projects: Project[] = [
       "Created a distributed system using ROS for drone control, MongoDB for mission data, and WebGL for 3D visualization of drone operations.",
     longDescription:
       "An advanced drone fleet management system that enables autonomous surveillance missions. The platform handles mission planning, real-time tracking, and emergency protocols. It includes features like geofencing, obstacle avoidance, and AI-powered target recognition.",
+    video:
+      "https://www.shutterstock.com/shutterstock/videos/3513089747/preview/stock-footage-launch-of-ballistic-missiles-himars-rockets-are-launched-from-a-mobile-launcher.webm",
   },
   {
     title: "Neural Warfare Simulator",
@@ -207,11 +210,22 @@ export default function ProjectsSection() {
                 </DialogHeader>
                 <div className="space-y-4">
                   <div className="relative w-full h-[180px] sm:h-[200px] md:h-[300px] rounded-lg overflow-hidden">
-                    <img
-                      src={selectedProject.image}
-                      alt={selectedProject.title}
-                      className="w-full h-full object-cover"
-                    />
+                    {selectedProject.video ? (
+                      <video
+                        src={selectedProject.video}
+                        controls
+                        className="w-full h-full object-cover"
+                        poster={selectedProject.image}
+                      >
+                        Your browser does not support the video tag.
+                      </video>
+                    ) : (
+                      <img
+                        src={selectedProject.image}
+                        alt={selectedProject.title}
+                        className="w-full h-full object-cover"
+                      />
+                    )}
                   </div>
 
                   <div className="space-y-3 md:space-y-4">
